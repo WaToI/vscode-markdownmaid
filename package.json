@@ -1,8 +1,8 @@
 {
-    "name": "mdownmaid",
-    "displayName": "MDownMaid",
+    "name": "markdownmaid",
+    "displayName": "MarkdownMaid",
     "description": "markdown with mermaid",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "WaTo",
     "engines": {
         "vscode": "^1.5.0"
@@ -11,17 +11,24 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:extension.MarkDownMaidPreview"
     ],
     "main": "./extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
-        }]
+        "commands": [
+            {
+                "command": "extension.MarkDownMaidPreview",
+                "title": "MarkDownMaid"
+            }
+        ]
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "dependencies": {
+        "jquery": "^3.1.1",
+        "marked": "^0.3.6",
+        "mermaid": "^6.0.0"
     },
     "devDependencies": {
         "typescript": "^2.0.3",
@@ -30,5 +37,10 @@
         "eslint": "^3.6.0",
         "@types/node": "^6.0.40",
         "@types/mocha": "^2.2.32"
-    }
+    },
+    "keywords": [
+        "Markdown",
+        "mermaid",
+        "diagram"
+    ]
 }

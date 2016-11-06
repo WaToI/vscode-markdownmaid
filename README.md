@@ -1,65 +1,76 @@
-# mdownmaid README
+## MarkdownMaid 
+---
 
-This is the README for your extension "mdownmaid". After writing up a brief description, we recommend including the following sections.
+### thanks
+* marked
+* mermaid
 
 ## Features
+---
+### subgraph
+```mermaid
+graph TB
+	subgraph one
+	a1-->a2
+	end
+	subgraph two
+	b1-->b2
+	end
+	subgraph three
+	c1-->c2
+	end
+	c1-->a2
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+	style a2 fill:#f9f,stroke:#333,stroke-width:4px;
+	style b2 fill:#ccf,stroke:#f66,stroke-width:2px,stroke-dasharray: 5, 5;
+```
 
-For example if there is an image subfolder under your extension project workspace:
+---
+### sequenceDiagram
+```mermaid
+sequenceDiagram
+	Alice->>Bob: Hello Bob, how are you?
+	alt is sick
+			Bob->>Alice: Not so good :(
+	else is well
+			Bob->>Alice: Feeling fresh like a daisy
+	end
+	opt Extra response
+			Bob->>Alice: Thanks for asking
+	end
+```
 
-\!\[feature X\]\(images/feature-x.png\)
+---
+### gantt
+```mermaid
+gantt
+	dateFormat  YYYY-MM-DD
+	title Adding GANTT diagram functionality to mermaid
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+	section A section
+	Completed task            :done,    des1, 2014-01-06,2014-01-08
+	Active task               :active,  des2, 2014-01-09, 3d
+	Future task               :         des3, after des2, 5d
+	Future task2              :         des4, after des3, 5d
 
-## Requirements
+	section Critical tasks
+	Completed task in the critical line :crit, done, 2014-01-06,24h
+	Implement parser and jison          :crit, done, after des1, 2d
+	Create tests for parser             :crit, active, 3d
+	Future task in critical line        :crit, 5d
+	Create tests for renderer           :2d
+	Add to mermaid                      :1d
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+	section Documentation
+	Describe gantt syntax               :active, a1, after des1, 3d
+	Add gantt diagram to demo page      :after a1  , 20h
+	Add another diagram to demo page    :doc1, after a1  , 48h
 
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+	section Last section
+	Describe gantt syntax               :after doc1, 3d
+	Add gantt diagram to demo page      : 20h
+	Add another diagram to demo page    : 48h
+```
+---
+### Release Notes
+* 0.1.0: preview markdown with mermaid
