@@ -1,5 +1,6 @@
 ## MarkdownMaid 
 Visual Studio Code Markdown Extension with mermaid
+![2016-11-06.png](https://qiita-image-store.s3.amazonaws.com/0/145884/3300f318-b590-d381-7ef1-9210d671c9b6.png)
 ---
 
 ### Usage
