@@ -1,6 +1,6 @@
-let vscode = require('vscode');
-let path = require('path');
-const _ = require('lodash');
+const vscode = require('vscode');
+const path = require('path');
+const loda = require('lodash');
 
 function activate(context) {
     const registerCommand = vscode.commands.registerCommand;
@@ -9,8 +9,8 @@ function activate(context) {
     let registration = vscode.workspace.registerTextDocumentContentProvider('MarkDoenMaid-preview', provider);
     console.log('Congratulations, your extension "markdownmaid" is now active!');
 
-    let disposable = registerCommand('extension.MarkDownMaidPreview', () => {
-        return vscode.commands.executeCommand('vscode.previewHtml', previewUri, vscode.ViewColumn.Two, 'MarkDownMaidPreview').then((success) => {
+    let disposable = registerCommand('extension.MarkdownMaidPreview', () => {
+        return vscode.commands.executeCommand('vscode.previewHtml', previewUri, vscode.ViewColumn.Two, 'MarkdownMaidPreview').then((success) => {
         }, (reason) => {
             vscode.window.showErrorMessage(reason);
         });
@@ -32,17 +32,17 @@ exports.activate = activate;
 
 class MDMDocumentContentProvider {
     getCurrenttext() {
-        let editor = vscode.window.activeTextEditor;
+        const editor = vscode.window.activeTextEditor;
         if (editor) {
-            let doc = editor.document;
+            const doc = editor.document;
             if (doc) {//} && doc.languageId === "markdown"){
                 return doc.getText();
             }
         }
+        return "";
     }
     provideTextDocumentContent(uri, token) {
         let buf = this.head + this.getCurrenttext() + this.tail;
-        console.log(buf);
         return buf;
     }
     get onDidChange() {
@@ -50,14 +50,14 @@ class MDMDocumentContentProvider {
     }
     unthrottledUpdate(uri) {
         const editor = vscode.window.activeTextEditor;
-        const text = editor.document.getText();
+        const text = this.getCurrenttext()
         const selStart = editor.document.offsetAt(editor.selection.anchor);
         this._onDidChange.fire(uri);
     }
     constructor(_context) {
         this.context = _context;
         this._onDidChange = new vscode.EventEmitter();
-        this.update = _.throttle(this.unthrottledUpdate, 250);
+        this.update = loda.throttle(this.unthrottledUpdate, 250);
         this.head = `
 <!DOCTYPE html>
 <html lang='ja'>
@@ -88,7 +88,7 @@ class MDMDocumentContentProvider {
 var renderer = new marked.Renderer();
 renderer.code = function (code, language) {
     if(language == 'mermaid')
-        return '<pre class="mermaid" align="left">'+code+'</pre>';
+        return '<pre class="mermaid">'+code+'</pre>';
     else
         return '<pre><code>'+code+'</code></pre>';
 };

@@ -2,6 +2,9 @@
 Visual Studio Code Markdown Extension with mermaid
 ---
 
+### Usage
+command: MarkdownMaid
+
 ### thanks
 * marked
 * mermaid
@@ -46,7 +49,7 @@ sequenceDiagram
 ```mermaid
 gantt
 	dateFormat  YYYY-MM-DD
-	title Adding GANTT diagram functionality to mermaid
+	title gantt diagram mermaid
 
 	section A section
 	Completed task            :done,    des1, 2014-01-06,2014-01-08

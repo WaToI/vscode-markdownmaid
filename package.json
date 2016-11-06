@@ -11,16 +11,23 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.MarkDownMaidPreview"
+        "onCommand:extension.MarkdownMaidPreview"
     ],
     "main": "./extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.MarkDownMaidPreview",
-                "title": "MarkDownMaid"
+                "command": "extension.MarkdownMaidPreview",
+                "title": "MarkdownMaid"
             }
         ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/WaToI/vscode-markdownmaid.git"
+    },
+    "bugs": {
+        "url": "https://github.com/WaToI/vscode-markdownmaid/issues"
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install"
