@@ -1,4 +1,5 @@
 ## MarkdownMaid 
+Visual Studio Code Markdown Extension with mermaid
 ---
 
 ### thanks
